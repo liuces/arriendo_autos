@@ -75,9 +75,8 @@
     const direccioninput = document.getElementById('direccion');
 
     formulario.addEventListener('submit', function (event) {
-        event.preventDefault(); // Evita que el formulario se envíe automáticamente
+        event.preventDefault(); 
 
-        // Aquí puedes realizar validaciones adicionales si es necesario
         if (nombreinput.value === '' || apellidoinput.value === '' || usuarioinput.value === '' || emailinput.value === '' || contrasenainput.value === '' || repetir_contrasenainput.value === '' || fecha_nacimientoinput.value === '' || direccioninput.value === '') {
             alert('Ninguno de los campos tiene que estar vacio');
             return;
@@ -92,7 +91,6 @@
             return;
         }
 
-        // Si todo está bien, puedes enviar el formulario manualmente
         alert('Usted se a registrado correctamente');
         formulario.submit();
     });
