@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{% url 'inicio' %}">
                 <img src="imgs/car.jpg" width="35px" alt="">
                 Coches Santiago</a>
         </div>
@@ -30,8 +30,8 @@
             <input type="password" class="form-control" id="contrasena">
         </div>
         <button type="submit" class="btn btn-primary">Iniciar sesion</button>
-        <a href="registro.html" class="btn btn-secondary">Registrarse</a>
-        <a href="recuperar_contrasena.html" class="btn btn-secondary">Recuperar contraseña</a>
+        <a href="{% url 'registro' %}" class="btn btn-secondary">Registrarse</a>
+        <a href="{% url 'recuperar_contrasena' %}" class="btn btn-secondary">Recuperar contraseña</a>
     </form>
 </body>
 
