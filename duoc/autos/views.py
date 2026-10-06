@@ -1,6 +1,6 @@
 
 from django.contrib import messages
-
+import requests
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import automovil, UserProfile
 
@@ -86,3 +86,29 @@ def listado_automoviles(request):
         'automoviles': automoviles
     }
     return render(request, 'listado_automoviles.html', context)
+
+def listado_automoviles_api(request):
+
+    url = "https://carapi.app/api/makes/v2"
+
+    token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjYXJhcGkuYXBwIiwic3ViIjoiNDg0MDdkMzMtODNjZC00MWI4LWIxM2ItNmE1NjI0Y2M2Zjc4IiwiYXVkIjoiNDg0MDdkMzMtODNjZC00MWI4LWIxM2ItNmE1NjI0Y2M2Zjc4IiwiZXhwIjoxNzkxODU2MjQwLCJpYXQiOjE3OTEyNTE0NDAsImp0aSI6IjBjMjFmMjM0LWNlMGItNDdjZC04YzUxLTJhOTM1YmQ5NjgyMyIsInVzZXIiOnsic3Vic2NyaXB0aW9ucyI6W10sInJhdGVfbGltaXRfdHlwZSI6ImhhcmQiLCJhZGRvbnMiOnsiYW50aXF1ZV92ZWhpY2xlcyI6ZmFsc2UsImRhdGFfZmVlZCI6ZmFsc2V9fX0.WQLdUDZ4NxUfo5AsU-6Q-PkkC-R9wiVteZE1kd2JgvI"
+
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/json"
+    }
+
+    respuesta = requests.get(url, headers=headers)
+
+    if respuesta.status_code == 200:
+        datos = respuesta.json()
+
+        print(datos)
+
+        return render(request, 'Autos_api.html', {
+            'marcas': datos['data']
+        })
+
+    return render(request, 'Autos_api.html', {
+        'marcas': []
+    })
