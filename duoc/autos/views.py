@@ -2,7 +2,7 @@
 from django.contrib import messages
 
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import automovil
+from .models import automovil, UserProfile
 
 # Create your views here.
 def inicio(request):

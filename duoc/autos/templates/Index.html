@@ -66,13 +66,18 @@
                     </div>
                 </div>
             </div>
-            {% for vehiculo in vehiculos %}
-            <tr>
-                <td>{{ vehiculo.nombre }}</td>
-                <td>{{ vehiculo.precio }}</td>
-                <td>{{ vehiculo.descripcion }}</td>
-
-            </tr>
+            {% for automovil in automoviles %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="{{ automovil.imagen.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ automovil.nombre }}</h5>
+                        <h5 class="card-title">${{ automovil.precio|floatformat:2 }}</h5>
+                        <p class="card-text">{{ automovil.descripcion }}</p>
+                        <a href="{% url 'coche4' %}" class="btn btn-primary">Reservar</a>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
 
 
