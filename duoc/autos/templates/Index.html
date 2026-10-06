@@ -66,6 +66,15 @@
                     </div>
                 </div>
             </div>
+            {% for vehiculo in vehiculos %}
+            <tr>
+                <td>{{ vehiculo.nombre }}</td>
+                <td>{{ vehiculo.precio }}</td>
+                <td>{{ vehiculo.descripcion }}</td>
+
+            </tr>
+            {% endfor %}
+
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card">

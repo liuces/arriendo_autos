@@ -1,0 +1,53 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coches Santiago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'inicio' %}">
+                <img src="{% static 'imgs/car.jpg' %}" width="35px" alt="">
+                Coches Santiago</a>
+        </div>
+        </div>
+    </nav>
+    <form id="form_editar_automovil" action="{% url 'editar_automovil' patente=auto.patente %}" method="POST" enctype="multipart/form-data">
+        <h1>EDITAR AUTOMOVIL</h1>
+        {% csrf_token %}
+        <div class="mb-3 col-10 col-sm-6 col-md-4 ">
+            <label for="patente" class="form-label">Patente</label>
+            <input type="text" class="form-control" id="patente" name="patente" value="{{ auto.patente }}" >
+        </div>
+        <div class="mb-3 col-10 col-sm-6 col-md-4 ">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre_automovil" name="nombre_automovil" value="{{ auto.nombre_automovil }}" >
+        </div>
+        <div class="mb-3 col-10 col-sm-6 col-md-4 ">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcion_automovil" name="descripcion_automovil" value="{{ auto.descripcion_automovil }}" >
+        </div>
+        <div class="mb-3 col-10 col-sm-6 col-md-4 ">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="text" class="form-control" id="precio" name="precio" value="{{ auto.precio }}" >
+        </div>
+        <div class="mb-3 col-10 col-sm-6 col-md-4 ">
+            <label for="imagen" class="form-label">Imagen</label>
+            <input type="file" class="form-control" id="imagen" name="imagen">  
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">  
+</script>
+
+</html>
